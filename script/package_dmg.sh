@@ -178,4 +178,7 @@ if [[ "$NOTARIZE" == "1" ]]; then
   notarize_dmg
 fi
 
+# The loose app is only packaging input. File Provider can add Finder metadata
+# after validation, while the app sealed inside the DMG remains unchanged.
+rm -rf "$APP_BUNDLE"
 echo "Validated DMG: $DMG_PATH"

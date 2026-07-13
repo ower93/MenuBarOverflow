@@ -19,7 +19,7 @@ This is intentionally narrower than Thaw. Thaw physically manages status-item la
 
 ## Build, Install, and Distribute
 
-The scripts always build one stable signed bundle at `dist/MenuBarOverflow.app`. The default signature is ad hoc and intended for a local personal installation. To install it without administrator access and run it from a location that Open at Login can use:
+The build script creates a signed bundle at `dist/MenuBarOverflow.app`. The default signature is ad hoc and intended for a local personal installation. To install it without administrator access and run it from a location that Open at Login can use:
 
 ```bash
 ./script/build_and_run.sh --install --verify
@@ -30,5 +30,7 @@ To create a drag-to-Applications DMG:
 ```bash
 ./script/package_dmg.sh
 ```
+
+The packaging script validates the app inside the DMG and removes its temporary loose app bundle, leaving `dist/MenuBarOverflow-<version>.dmg` as the distribution artifact.
 
 `./script/launch.sh` launches only an installed copy from `~/Applications` or `/Applications`; use `./script/launch.sh --install` to build and install first. See [Distribution](docs/DISTRIBUTION.md) for the permission, login startup, Developer ID, hardened-runtime, and notarization flows.

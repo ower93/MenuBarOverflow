@@ -172,6 +172,19 @@ clear_bundle_attributes() {
   /usr/bin/xattr -dr com.apple.ResourceFork "$bundle" 2>/dev/null || true
 }
 
+verify_bundle_signature() {
+  local bundle="$1"
+  local attempt
+  for attempt in {1..5}; do
+    clear_bundle_attributes "$bundle"
+    if /usr/bin/codesign --verify --strict --verbose=2 "$bundle" >/dev/null 2>&1; then
+      return 0
+    fi
+    sleep 0.2
+  done
+  /usr/bin/codesign --verify --strict --verbose=2 "$bundle" >/dev/null
+}
+
 validate_bundle() {
   local bundle="$1"
   local plist="$bundle/Contents/Info.plist"
@@ -198,7 +211,7 @@ validate_bundle() {
     [[ -f "$bundle/Contents/Resources/$resource" ]] || fail "required resource is missing: $resource"
   done
 
-  /usr/bin/codesign --verify --strict --verbose=2 "$bundle" >/dev/null
+  verify_bundle_signature "$bundle"
   local signing_details
   signing_details="$(/usr/bin/codesign -dvv "$bundle" 2>&1)"
   [[ "$signing_details" == *"Identifier=$BUNDLE_ID"* ]] || fail "signature identifier does not match $BUNDLE_ID"

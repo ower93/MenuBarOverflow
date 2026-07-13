@@ -2,10 +2,12 @@
 
 ## Local Build and Installation
 
-The packaging scripts create and validate the same stable application bundle:
+The build and packaging scripts create these validated outputs:
 
 - `dist/MenuBarOverflow.app`
 - `dist/MenuBarOverflow-<APP_VERSION>.dmg`
+
+`build_and_run.sh` leaves the loose app bundle in `dist`. `package_dmg.sh` uses that bundle as packaging input, validates the copy mounted from the completed image, and removes the loose bundle so the DMG is the only distribution artifact.
 
 The default is ad-hoc signing. It is appropriate for a personal machine, but it is not a notarized public release.
 
