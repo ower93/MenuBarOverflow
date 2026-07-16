@@ -6,7 +6,7 @@ APP_NAME="MenuBarOverflow"
 DISPLAY_NAME="Menu Bar Overflow"
 DIST_DIR="$ROOT_DIR/dist"
 APP_BUNDLE="$DIST_DIR/$APP_NAME.app"
-APP_VERSION="${APP_VERSION:-1.0}"
+APP_VERSION="${APP_VERSION:-1.1}"
 DMG_PATH="$DIST_DIR/$APP_NAME-$APP_VERSION.dmg"
 CONFIGURATION="release"
 SIGNING_MODE="${SIGNING_MODE:-adhoc}"
@@ -29,7 +29,7 @@ Options:
   -h, --help          Show this help.
 
 Environment:
-  APP_VERSION=1.0
+  APP_VERSION=1.1
   SIGNING_MODE=adhoc|developer-id
   DEVELOPER_ID_APPLICATION='Developer ID Application: Name (TEAMID)'
   NOTARIZE=1

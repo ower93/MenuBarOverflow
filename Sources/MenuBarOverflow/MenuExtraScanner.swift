@@ -76,13 +76,7 @@ final class MenuExtraScanner {
             let bundleIdentifier = application.bundleIdentifier
             let isWindowServerOnScreen = menuBarWindows.isWindowServerOnScreen(for: frame)
 
-            let icon = iconProvider.icon(
-                for: child,
-                owner: application,
-                frame: frame,
-                title: title,
-                index: index
-            )
+            let icon = iconProvider.icon(for: application)
 
             return MenuExtraItem(
                 id: "\(application.processIdentifier):\(index):\(title):\(frame?.debugDescription ?? "no-frame")",

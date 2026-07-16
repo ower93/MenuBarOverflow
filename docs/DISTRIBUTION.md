@@ -25,8 +25,7 @@ The DMG contains the app and an `Applications` shortcut. Drag the app into eithe
 
 1. Start the installed app with `./script/launch.sh`, or open it from Applications.
 2. From the app menu, choose **Request Accessibility Access** or **Open Accessibility Settings**, then enable **Menu Bar Overflow** under **Privacy & Security > Accessibility**. This permission is required to discover and press menu-bar extras.
-3. For captured menu-extra icons, use **Request Screen Recording for Real Icons** in the app menu, then enable it under **Privacy & Security > Screen Recording**. The app remains usable without this optional permission.
-4. After updating an ad-hoc-signed local build, macOS may require permissions to be granted again. This is normal for local, non-notarized builds.
+3. After updating an ad-hoc-signed local build, macOS may require Accessibility permission to be granted again. This is normal for local, non-notarized builds.
 
 ## Open at Login
 
@@ -76,7 +75,7 @@ The package targets macOS 14 or later. Build with a matching Apple Swift toolcha
 Useful overrides:
 
 ```text
-APP_VERSION=1.0            DMG filename and CFBundleShortVersionString
+APP_VERSION=1.1            DMG filename and CFBundleShortVersionString
 BUILD_NUMBER=1             CFBundleVersion
 SIGNING_MODE=adhoc         Default local signing mode
 SIGNING_MODE=developer-id  Distribution signing mode
